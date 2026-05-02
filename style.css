@@ -1,0 +1,110 @@
+/* 1. Global thumbnail container styling - Ripple Style far-left/right positioning */
+.multithumb-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    align-items: center !important;
+    max-height: 85vh !important;
+    width: auto !important;
+    overflow-y: auto !important;
+    flex-shrink: 0 !important;
+    z-index: 10 !important;
+    scrollbar-width: none !important;
+    padding: 0 !important;
+    grid-area: thumbs !important;
+    align-self: start !important;
+    position: sticky !important;
+    top: 5px !important;
+    margin: 0 !important;
+}
+
+.multithumb-container::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* 2. Individual thumbnail styling - Ripple Match + Custom Sizing */
+.multithumb-item {
+    /* Priority: User Setting > Theme Ripple Setting > Theme Global Setting > Default */
+    width: var(--multithumb-width, var(--customRippleAvatarWidth, var(--avatar-width, 65px))) !important;
+    aspect-ratio: 2 / 3 !important;
+    height: auto !important;
+    border-radius: 15px 0 0 0 !important;
+    object-fit: cover !important;
+    border: none !important; /* Border removed as requested */
+    box-shadow: none !important;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    mask-image: linear-gradient(to bottom, black 90%, transparent 100%) !important;
+}
+
+.multithumb-item:hover {
+    transform: scale(1.02);
+    /* Border color change removed since border is none */
+}
+
+/* 3. Message Block Grid Layout - FAR LEFT THUMBNAILS */
+/* thumbs spans all rows on the left, name/text/controls stack on the right */
+.mes[has-multithumbs="true"] .mes_block {
+    display: grid !important;
+    grid-template-areas: 
+        "thumbs header"
+        "thumbs text"
+        "thumbs controls" !important;
+    grid-template-columns: auto 1fr !important;
+    grid-template-rows: auto 1fr auto !important;
+    gap: 5px 15px !important;
+    padding-left: 0 !important; /* Move to far left */
+}
+
+/* Assign areas */
+.mes[has-multithumbs="true"] .mes_header { 
+    grid-area: header !important; 
+    width: 100% !important;
+    border-bottom: 1px solid var(--SmartThemeBodyColor, rgba(255, 255, 255, 0.2)) !important;
+    padding-bottom: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+.mes[has-multithumbs="true"] .mes_text { 
+    grid-area: text !important; 
+    padding-top: 0 !important;
+}
+
+.mes[has-multithumbs="true"] .mes_controls { 
+    grid-area: controls !important; 
+}
+
+/* 4. User Message RTL Support - FAR RIGHT THUMBNAILS */
+.mes[has-multithumbs="true"][is_user="true"] .mes_block {
+    grid-template-areas: 
+        "header thumbs"
+        "text thumbs"
+        "controls thumbs" !important;
+    grid-template-columns: 1fr auto !important;
+    padding-right: 0 !important;
+}
+
+/* User avatar rounding flip */
+.mes[has-multithumbs="true"][is_user="true"] .multithumb-item {
+    border-radius: 0 15px 0 0 !important;
+}
+
+/* 5. Theme Cleanup */
+.mes[has-multithumbs="true"] .avatar {
+    display: none !important;
+}
+
+.mes.echo[has-multithumbs="true"] .mes_text::before {
+    display: none !important;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+    .multithumb-item {
+        width: var(--customRippleAvatarMobileWidth, 50px) !important;
+    }
+    .mes[has-multithumbs="true"] .mes_block {
+        gap: 5px 8px !important;
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "display_name": "SillyTavern-MultiThumb",
+    "js": "index.js",
+    "css": "style.css",
+    "author": "QuigleyDown",
+    "version": "2.2.0",
+    "description": "Displays multiple character avatars in a vertical row for multi-character cards.",
+    "repository": "https://github.com/QuigleyDown/SillyTavern_MultiThumb",
+    "min_server_version": "1.12.0"
+}
