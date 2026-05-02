@@ -11,7 +11,7 @@
     z-index: 10 !important;
     scrollbar-width: none !important;
     padding: 0 !important;
-    margin: 5px 0 0 0 !important; /* Add some top margin to separate from optional info */
+    margin: 5px 15px 0 0 !important; /* Separate from text */
 }
 
 .multithumb-container::-webkit-scrollbar {
@@ -44,6 +44,14 @@
 }
 
 /* 3. Theme Cleanup */
+/* Ensure the wrapper can expand to fit our thumbnails */
+.mes[has-multithumbs="true"] .mesAvatarWrapper {
+    width: auto !important;
+    min-width: min-content !important;
+    max-width: none !important;
+    overflow: visible !important;
+}
+
 /* Hide the original singular avatar */
 .mes[has-multithumbs="true"] .avatar {
     display: none !important;
@@ -56,6 +64,18 @@
 /* Mobile Adjustments */
 @media (max-width: 600px) {
     .multithumb-item {
-        width: var(--customRippleAvatarMobileWidth, 50px) !important;
+        /* Allow setting to override on mobile */
+        width: var(--multithumb-width, 50px) !important;
     }
+    .multithumb-container {
+        margin: 5px 10px 0 0 !important; /* Slightly less margin on mobile */
+    }
+    .mes[has-multithumbs="true"][is_user="true"] .multithumb-container {
+        margin: 5px 0 0 10px !important;
+    }
+}
+
+/* User Message RTL Support */
+.mes[has-multithumbs="true"][is_user="true"] .multithumb-container {
+    margin: 5px 0 0 15px !important; /* Separate from text on the left */
 }
