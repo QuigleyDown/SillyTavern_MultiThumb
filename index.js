@@ -170,7 +170,14 @@
         try {
             const context = window.SillyTavern.getContext();
             let html = '';
-            const paths = ['third-party/multithumbs', 'multithumbs'];
+            const paths = [
+                'third-party/SillyTavern_MultiThumb',
+                'SillyTavern_MultiThumb',
+                'third-party/sillytavern-multithumb',
+                'sillytavern-multithumb',
+                'third-party/multithumbs',
+                'multithumbs'
+            ];
             for (const path of paths) {
                 try {
                     html = await context.renderExtensionTemplateAsync(path, 'settings');
