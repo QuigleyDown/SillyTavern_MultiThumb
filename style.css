@@ -44,15 +44,15 @@
 }
 
 /* 3. Message Block Grid Layout - FAR LEFT THUMBNAILS */
-/* Header spans full width at top, thumbs and text/controls below */
+/* thumbs spans all rows on the left, name/text/controls stack on the right */
 .mes[has-multithumbs="true"] .mes_block {
     display: grid !important;
     grid-template-areas: 
-        "header header"
+        "thumbs header"
         "thumbs text"
         "thumbs controls" !important;
     grid-template-columns: auto 1fr !important;
-    grid-template-rows: auto auto 1fr !important;
+    grid-template-rows: auto 1fr auto !important;
     gap: 5px 15px !important;
     padding-left: 0 !important; /* Move to far left */
 }
@@ -78,7 +78,7 @@
 /* 4. User Message RTL Support - FAR RIGHT THUMBNAILS */
 .mes[has-multithumbs="true"][is_user="true"] .mes_block {
     grid-template-areas: 
-        "header header"
+        "header thumbs"
         "text thumbs"
         "controls thumbs" !important;
     grid-template-columns: 1fr auto !important;
