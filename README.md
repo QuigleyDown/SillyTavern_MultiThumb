@@ -16,10 +16,11 @@
 ## Installation
 
 1.  **Locate your SillyTavern Directory**: Navigate to the folder where SillyTavern is installed on your machine.
-2.  **Copy the Extension**: Move the `multithumbs` folder into the following directory:
+2.  **Copy the Extension**: Move the `SillyTavern_MultiThumb` folder into the following directory:
     ```text
     SillyTavern/public/scripts/extensions/third-party/
     ```
+    *(Alternatively, you can just use the "Install from URL" feature in SillyTavern with the GitHub link).*
 3.  **Refresh SillyTavern**: Reload your browser tab running SillyTavern.
 4.  **Enable the Extension**:
     - Click the **Extensions** icon (puzzle piece) in the top bar.
