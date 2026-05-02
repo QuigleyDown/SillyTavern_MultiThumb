@@ -81,7 +81,8 @@
             const galleryImages = await getGalleryImages(characterName, character);
             const folder = getGalleryFolderName(character);
             const mesBlock = mesElement.querySelector('.mes_block');
-            if (!mesBlock) return;
+            const avatarWrapper = mesElement.querySelector('.mesAvatarWrapper');
+            if (!mesBlock && !avatarWrapper) return;
 
             mesElement.querySelectorAll('.multithumb-container').forEach(el => el.remove());
             const container = document.createElement('div');
@@ -103,9 +104,13 @@
                 container.appendChild(img);
             });
 
-            const mesHeader = mesElement.querySelector('.mes_header');
-            if (mesHeader) mesHeader.after(container);
-            else mesBlock.prepend(container);
+            if (avatarWrapper) {
+                avatarWrapper.appendChild(container);
+            } else if (mesBlock) {
+                const mesHeader = mesElement.querySelector('.mes_header');
+                if (mesHeader) mesHeader.after(container);
+                else mesBlock.prepend(container);
+            }
 
             mesElement.setAttribute('has-multithumbs', 'true');
         } catch (err) {
