@@ -11,7 +11,7 @@
     z-index: 10 !important;
     scrollbar-width: none !important;
     padding: 0 !important;
-    margin: 5px 15px 0 0 !important; /* Separate from text */
+    margin: 5px 20px 0 0 !important; /* Separate from text */
 }
 
 .multithumb-container::-webkit-scrollbar {
@@ -44,12 +44,17 @@
 }
 
 /* 3. Theme Cleanup */
-/* Ensure the wrapper can expand to fit our thumbnails */
+/* Ensure the wrapper is centered and doesn't have negative margins pulling it out */
 .mes[has-multithumbs="true"] .mesAvatarWrapper {
     width: auto !important;
     min-width: min-content !important;
     max-width: none !important;
     overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
 }
 
 /* Hide the original singular avatar */
@@ -62,20 +67,20 @@
 }
 
 /* Mobile Adjustments */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     .multithumb-item {
-        /* Allow setting to override on mobile */
+        /* Prioritize setting, fallback to 50px */
         width: var(--multithumb-width, 50px) !important;
     }
     .multithumb-container {
-        margin: 5px 10px 0 0 !important; /* Slightly less margin on mobile */
+        margin: 5px 12px 0 0 !important; /* Slightly more than before */
     }
     .mes[has-multithumbs="true"][is_user="true"] .multithumb-container {
-        margin: 5px 0 0 10px !important;
+        margin: 5px 0 0 12px !important;
     }
 }
 
 /* User Message RTL Support */
 .mes[has-multithumbs="true"][is_user="true"] .multithumb-container {
-    margin: 5px 0 0 15px !important; /* Separate from text on the left */
+    margin: 5px 0 0 20px !important; /* Separate from text on the left */
 }
